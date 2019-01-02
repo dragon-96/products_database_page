@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head>
+
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+{% load static %}
+<link rel="stylesheet" href="{% static 'homelog/products.css' %}"  type="text/css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+  {% block content %}
+      <form action="" method="get">
+          {{ filter.form.as_p }}
+          <input type="submit" />
+      </form>
+  {% endblock %}
+
+
+
+<div class="container">
+    <div class="row">
+{%  for obj in filter.qs %}
+        <div class="col-md-4">
+            <div class="product-item">
+              <div class="pi-img-wrapper">
+                <img src="{{obj.image.url}}" class="img-responsive" alt="{{obj.brand}}">
+                <div>
+                  <a href="#" class="btn">Zoom</a>
+                  <a href="#" class="btn">View</a>
+                </div>
+              </div>
+              <h3><a href="shop-item.html">{{obj.summary}}</a></h3>
+              <div class="pi-price">{{obj.price}}</div>
+              <a href="javascript:;" class="btn add2cart">Add to cart</a>
+              <div class="sticker sticker-new"></div>
+            </div>
+        </div>
+{% endfor %}
+
+    </div>
+</div>
+</body>
+</html>
